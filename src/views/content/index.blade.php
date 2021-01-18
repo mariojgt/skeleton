@@ -1,5 +1,3 @@
-<h1>
-
+<x-skeleton::layout.main>
     Hey you are here :)
-
-</h1>
+</x-skeleton::layout.main>
