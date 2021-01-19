@@ -40,7 +40,7 @@ You have 2 options.
            "guzzlehttp/guzzle": "^7.0.1",//Example
            "laravel/framework": "^8.12",//Example
            "laravel/tinker": "^2.5",//Example
-           "mariojgt/phantomzone": "@dev"// Here is where you add the package reference
+           "mariojgt/skeleton": "@dev"// Here is where you add the package reference
        },
    ```
 
