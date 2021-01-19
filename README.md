@@ -7,6 +7,7 @@ This Laravel packages contain a very simple structure for any kind of packages d
 - [ ] Clean and basic start point in package development.
 - [ ] Webpack setup with tailwind css and sweetalert2.
 - [ ] Simple out of the box Laravel Authentication.
+- [ ] Example Laravel components, and layout structure.
 
 # Installation
 
