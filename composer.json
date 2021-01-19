@@ -2,7 +2,7 @@
     "name": "mariojgt/skeleton",
     "description": "A Laravel Package Skeleton, a quick start for new laravel Packages",
     "keywords": [
-        "laravel"
+        "laravel", "demo package", "package development", "tailwind laravel"
     ],
     "type": "laravel",
     "license": "MIT",
