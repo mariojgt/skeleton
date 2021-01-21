@@ -2,6 +2,9 @@
 namespace Mariojgt\Skeleton;
 
 use Illuminate\Support\ServiceProvider;
+use Mariojgt\Skeleton\Events\UserVerifyEvent;
+use Mariojgt\Skeleton\Listeners\SendUserVerifyListener;
+use Illuminate\Support\Facades\Event;
 
 class SkeletonProvider extends ServiceProvider
 {
@@ -12,6 +15,12 @@ class SkeletonProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Event for when you create a new user
+        Event::listen(
+            UserVerifyEvent::class,
+            [SendUserVerifyListener::class, 'handle']
+        );
+
         // Load skeleton views
         $this->loadViewsFrom(__DIR__.'/views', 'skeleton');
         // Load skeleton routes

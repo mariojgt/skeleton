@@ -15,10 +15,10 @@ Route::group([
 
 // Auth Route
 Route::group([
-    'middleware' => ['web', 'auth']
+    'middleware' => ['web', 'auth', 'verified']
 ], function () {
     // Logout function
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-    // Example page not required to be login
+    // Example page required to be login
     Route::get('/home_dashboard', [DashboardController::class, 'index'])->name('home_dashboard');
 });

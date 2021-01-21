@@ -3,11 +3,15 @@
 namespace Mariojgt\Skeleton\Controllers\Auth;
 
 use Illuminate\Http\Request;
-use Mariojgt\Skeleton\Models\User;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Mariojgt\Skeleton\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 class LoginController extends Controller
 {
@@ -36,6 +40,9 @@ class LoginController extends Controller
         $user->password = Hash::make(Request('password'));
         $user->save();
 
+        // Send the verification to the user
+        event(new Registered($user));
+
         return  Redirect::back()->with('success', 'success');
     }
 
@@ -61,5 +68,36 @@ class LoginController extends Controller
         Auth::logout();
 
         return Redirect::route('login')->with('success', 'By :)');
+    }
+
+    public function verify(Request $request, $userId, $expiration)
+    {
+        $userId     = decrypt($userId);
+        $expiration = decrypt($expiration);
+        $nowDate    = Carbon::now();
+        $user       = User::findOrFail($userId);
+
+        // Check if is expired
+        if ($nowDate > $expiration) {
+            return Redirect::route('login')->with('error', 'Link Expired!');
+        }
+
+        // Check if the user has been verify
+        if (!$user->hasVerifiedEmail()) {
+            $user->markEmailAsVerified();
+            event(new Verified($user));
+        }
+
+        // Return to the the login page as success
+        return Redirect::route('login')->with('success', 'User verify with success!');
+    }
+
+    public function needVerify()
+    {
+        // Logout the user and redirect him to the home page
+        Auth::logout();
+
+        // Return to the the login page as success
+        return Redirect::route('login')->with('error', 'User need to be verify!');
     }
 }

@@ -11,10 +11,6 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.webpackConfig({
-  stats: "normal"
-});
-
 mix.js('resources/vendor/Skeleton/js/app.js', 'public/vendor/Skeleton/js')
     .sourceMaps()
     .version();
