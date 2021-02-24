@@ -13,7 +13,7 @@ class UserVerifyEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public User $user;
+    public $user;
     /**
      * Create a new message instance.
      *
