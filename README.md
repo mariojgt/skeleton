@@ -1,5 +1,6 @@
-# Skeleton
 ![image info](https://raw.githubusercontent.com/mariojgt/skeleton/master/Publish/Public/image/skeleton.png)
+
+# Skeleton
 This Laravel packages contain a very simple structure for any kind of packages development for Laravel.
 
 # Features
