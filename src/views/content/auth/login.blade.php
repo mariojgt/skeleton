@@ -1,5 +1,8 @@
 <x-skeleton::layout.login>
-    <x-skeleton::auth.authconteiner title="Login" >
+    <x-skeleton::auth.authconteiner
+    title="Login"
+    image="/vendor/Skeleton/image/skeleton.png"
+    >
         <x-slot name="form">
             <x-skeleton::form.form action="{{ route('login.user') }}" >
                 <div class="px-5 py-7">
@@ -17,6 +20,9 @@
                 </div>
                 <div class="text-center sm:text-center whitespace-nowrap" >
                     <x-skeleton::form.link route="{{ route('register') }}" name="Register" />
+                </div>
+                <div class="text-center sm:text-center whitespace-nowrap" >
+                    <x-skeleton::form.dark_light />
                 </div>
             </div>
         </x-slot>

@@ -9,7 +9,7 @@
     @stack('css')
 </head>
 <body>
-    <div class="min-w-screen min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center px-5 py-5" >
+    <div id="app" class="min-w-screen min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center px-5 py-5" >
         @if (Auth::check())
             <x-skeleton::layout.navbar />
         @endif
@@ -20,6 +20,7 @@
     </div>
 
     <script src="{{ asset('vendor/Skeleton/js/app.js') }}"></script>
+    <script src="{{ asset('vendor/Skeleton/js/vue.js') }}"></script>
     <script>
         const Toast = Swal.mixin({
             toast: true,

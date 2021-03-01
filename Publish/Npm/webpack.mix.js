@@ -10,8 +10,14 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-
+// Normal js files
 mix.js('resources/vendor/Skeleton/js/app.js', 'public/vendor/Skeleton/js')
+    .sourceMaps()
+    .version();
+
+// Vue js example
+mix.js('resources/vendor/Skeleton/js/vue.js', 'public/vendor/Skeleton/js')
+    .vue({version: 3})
     .sourceMaps()
     .version();
 

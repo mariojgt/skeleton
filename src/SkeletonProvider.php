@@ -1,10 +1,12 @@
 <?php
 namespace Mariojgt\Skeleton;
 
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Mariojgt\Skeleton\Commands\Publish;
+use Mariojgt\Skeleton\Commands\Republish;
 use Mariojgt\Skeleton\Events\UserVerifyEvent;
 use Mariojgt\Skeleton\Listeners\SendUserVerifyListener;
-use Illuminate\Support\Facades\Event;
 
 class SkeletonProvider extends ServiceProvider
 {
@@ -20,6 +22,13 @@ class SkeletonProvider extends ServiceProvider
             UserVerifyEvent::class,
             [SendUserVerifyListener::class, 'handle']
         );
+
+        // Load some commands
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                Republish::class,
+            ]);
+        }
 
         // Load skeleton views
         $this->loadViewsFrom(__DIR__.'/views', 'skeleton');
