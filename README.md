@@ -4,11 +4,16 @@ This Laravel packages contain a very simple structure for any kind of packages d
 
 # Features
 
-- [ ] Clean and basic start point in package development.
-- [ ] Webpack setup with tailwind css and sweetalert2.
+- [ ] Clean and basic start point in Laravel package development.
+- [ ] Webpack setup with tailwind css ,sweetalert2 and vue3 basic setup.
 - [ ] Simple out of the box Laravel Authentication.
 - [ ] Example Laravel components, and layout structure.
 - [ ] Tailwind with npm presetup for runing with packages.
+- [ ] Republish command
+- [ ] Reusable laravel layout
+- [ ] Dynamic form
+- [ ] Lightweight
+- [ ] Dark|light mode out of the box
 
 # Installation
 
@@ -48,3 +53,16 @@ You have 2 options.
 
 4. php artsain vendor:publish --force  (select the package number)
 
+## Command Republish
+
+The following commands
+
+```php
+php artisan republish:skeleton
+```
+
+Will move you changes in your resources like the js or css back to the packages useful to speed up development.
+
+# Packages info
+
+This package purpose is to give a fresh start for a new package so you can use those premade tools or just delete and use the package skeleton.
