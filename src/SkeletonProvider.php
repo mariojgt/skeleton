@@ -3,8 +3,8 @@ namespace Mariojgt\Skeleton;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
-use Mariojgt\Skeleton\Commands\Publish;
 use Mariojgt\Skeleton\Commands\Republish;
+use Mariojgt\Skeleton\Commands\Install;
 use Mariojgt\Skeleton\Events\UserVerifyEvent;
 use Mariojgt\Skeleton\Listeners\SendUserVerifyListener;
 
@@ -27,6 +27,7 @@ class SkeletonProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 Republish::class,
+                Install::class,
             ]);
         }
 
