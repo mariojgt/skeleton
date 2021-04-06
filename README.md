@@ -67,3 +67,8 @@ Will move you changes in your resources like the js or css back to the packages 
 # Packages info
 
 This package purpose is to give a fresh start for a new package so you can use those premade tools or just delete and use the package skeleton.
+# Easy way to install
+
+```php
+php artisan install:skeleton
+```
