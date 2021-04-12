@@ -38,9 +38,15 @@ class Install extends Command
      */
     public function handle()
     {
-        // Copy the need file to make the onix pacakge to run
+        // Copy the need file to make the skeleton to work
         Artisan::call('vendor:publish', [
             '--provider' => 'Mariojgt\Skeleton\SkeletonProvider',
+            '--force'    => true
+        ]);
+
+        // Copy the need file to make the laravel sanctum work
+        Artisan::call('vendor:publish', [
+            '--provider' => 'Laravel\Sanctum\SanctumServiceProvider',
             '--force'    => true
         ]);
 
