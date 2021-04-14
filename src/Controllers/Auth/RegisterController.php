@@ -22,6 +22,10 @@ class RegisterController extends Controller
 
     public function userRegister(Request $request)
     {
+        if (config('skeleton.register_enable') == false) {
+            return  Redirect::back()->with('error', 'Sorry but registration has been disable.');
+        }
+
         // Validate the user
         $request->validate([
             'name'     => ['required', 'string', 'max:255'],
