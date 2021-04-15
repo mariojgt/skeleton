@@ -67,7 +67,7 @@ Will move you changes in your resources like the js or css back to the packages 
 
 # Packages info
 
-This package purpose is to give a fresh start for a new package so you can use those premade tools or just delete and use the package skeleton.
+This package purpose is to give a fresh start for a new package so you can use those premade tools or just delete and use the package skeleton, note the by default the system don't allow registration but you can change that i the skeleton config file.
 # Easy way to install
 
 ```php

@@ -71,4 +71,13 @@ class AuthApi extends Controller
             'data' => 'User Created with success please verify your email',
         ]);
     }
+
+    public function checkConnection()
+    {
+        return response()->json([
+            'app_name' => env('APP_NAME'),
+            'version'  => config('skeleton.version'),
+            'status'   => true,
+        ]);
+    }
 }
