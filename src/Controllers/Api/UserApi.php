@@ -13,6 +13,13 @@ use Validator;
 
 class UserApi extends Controller
 {
+    public function checkToken(Request $request)
+    {
+        return response()->json([
+            'data' => true,
+        ]);
+    }
+
     public function home(Request $request)
     {
         return response()->json([

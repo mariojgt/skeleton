@@ -22,6 +22,8 @@ Route::group([
     'middleware' => ['auth:sanctum'],
     'prefix' => 'api'
 ], function () {
-    // Logout function
+    // Load user info
     Route::post('/skeleton/api/user', [UserApi::class, 'home'])->name('skeleton.api.user');
+    // check valid token
+    Route::post('/skeleton/api/check-token', [UserApi::class, 'checkToken'])->name('skeleton.api.check-token');
 });

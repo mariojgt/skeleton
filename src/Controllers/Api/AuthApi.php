@@ -36,6 +36,7 @@ class AuthApi extends Controller
             return response()->json([
                 'raw_token' => $token,
                 'token'     => explode('|', $token)[1],
+                'status'    => true,
             ]);
         } else {
             return response()->json([
