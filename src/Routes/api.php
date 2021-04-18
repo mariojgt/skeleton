@@ -30,8 +30,10 @@ Route::group([
     'middleware' => ['auth:sanctum'],
     'prefix' => 'api'
 ], function () {
-    // Load user info
-    Route::post('/skeleton/api/user', [UserApi::class, 'home'])->name('skeleton.api.user');
-    // check valid token
+    // Check valid token
     Route::post('/skeleton/api/check-token', [UserApi::class, 'checkToken'])->name('skeleton.api.check-token');
+
+    // Load user info
+    Route::post('/skeleton/api/user', [UserApi::class, 'userProfile'])->name('skeleton.api.user');
+    Route::post('/skeleton/api/user-update', [UserApi::class, 'userUpdateProfile'])->name('skeleton.api.user-update');
 });

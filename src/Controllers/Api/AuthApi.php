@@ -72,7 +72,7 @@ class AuthApi extends Controller
             'data' => 'User Created with success please verify your email',
         ]);
     }
-
+    // Check boot token
     public function checkConnection()
     {
         return response()->json([
@@ -82,7 +82,7 @@ class AuthApi extends Controller
             'status'   => true,
         ]);
     }
-
+    // CHeck if this url is valid
     public function checkUrl()
     {
         return response()->json([
