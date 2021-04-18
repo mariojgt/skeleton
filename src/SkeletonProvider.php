@@ -3,8 +3,8 @@ namespace Mariojgt\Skeleton;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
-use Mariojgt\Skeleton\Commands\Republish;
 use Mariojgt\Skeleton\Commands\Install;
+use Mariojgt\Skeleton\Commands\Republish;
 use Mariojgt\Skeleton\Events\UserVerifyEvent;
 use Mariojgt\Skeleton\Listeners\SendUserVerifyListener;
 
@@ -33,8 +33,8 @@ class SkeletonProvider extends ServiceProvider
 
         // Loading the middlewhere
         $this->app['router']->aliasMiddleware(
-            'ske',
-            \Mariojgt\Skeleton\Middleware\RawApi::class
+            'boot_token',
+            \Mariojgt\Skeleton\Middleware\BootTokenApi::class
         );
 
         // Load skeleton views

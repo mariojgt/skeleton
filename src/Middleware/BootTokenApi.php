@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
 
-class RawApi
+class BootTokenApi
 {
 
     public function __construct(Application $app, Request $request)
@@ -33,10 +33,10 @@ class RawApi
         if (empty($request->bearerToken())) {
             // Case missing token
             return response()->json([
-                'data' => 'Missing Token',
+                'data' => 'Boot token missing or invalid',
             ], 401);
         } else {
-            if ($request->bearerToken() == config('skeleton.token')) {
+            if ($request->bearerToken() == config('skeleton.boot_token')) {
                 // On Sucess
                 return $next($request);
             } else {

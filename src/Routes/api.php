@@ -6,7 +6,7 @@ use Mariojgt\Skeleton\Controllers\Api\UserApi;
 
 // Standard
 Route::group([
-    'middleware' => ['ske'],
+    'middleware' => ['boot_token'],
     'prefix' => 'api'
 ], function () {
     // Api example to Login
@@ -14,7 +14,7 @@ Route::group([
     // Api Example to Register
     Route::post('/skeleton/api/register', [AuthApi::class, 'register'])->name('skeleton.api.register');
     // Api connection test
-    Route::get('/skeleton/api/secure', [AuthApi::class, 'checkConnection'])->name('skeleton.api.secure');
+    Route::post('/skeleton/api/check-boot-tooken', [AuthApi::class, 'checkConnection'])->name('skeleton.api.check-boot-tooken');
 });
 
 // Auth Route
