@@ -73,3 +73,5 @@ This package purpose is to give a fresh start for a new package so you can use t
 ```php
 php artisan install:skeleton
 ```
+
+1.0.4
