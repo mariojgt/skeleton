@@ -78,6 +78,15 @@ class AuthApi extends Controller
         return response()->json([
             'app_name' => env('APP_NAME'),
             'version'  => config('skeleton.version'),
+            'message'  => 'Boot Token authentication with success',
+            'status'   => true,
+        ]);
+    }
+
+    public function checkUrl()
+    {
+        return response()->json([
+            'version'  => 'Connection successful',
             'status'   => true,
         ]);
     }

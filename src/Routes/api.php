@@ -4,6 +4,14 @@ use Illuminate\Support\Facades\Route;
 use Mariojgt\Skeleton\Controllers\Api\AuthApi;
 use Mariojgt\Skeleton\Controllers\Api\UserApi;
 
+// Check url
+Route::group([
+    'prefix' => 'api'
+], function () {
+    // Api example to Login
+    Route::get('/check-url', [AuthApi::class, 'checkUrl'])->name('check-url');
+});
+
 // Standard
 Route::group([
     'middleware' => ['boot_token'],
