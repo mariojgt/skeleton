@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Mariojgt\Skeleton\Events\UserVerifyEvent;
 use Validator;
 
-class AuthApi extends Controller
+class AuthApiControler extends Controller
 {
     public function login(Request $request)
     {
@@ -20,17 +20,18 @@ class AuthApi extends Controller
             'email'    => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:8'],
         ]);
+
         // If Validation Fail
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
-
+        // Credentials for the login
         $credentials = $request->only('email', 'password');
         // Try login
         if (Auth::attempt($credentials)) {
             // Create the device name
             $tokenName = $_SERVER['SERVER_NAME'] . '-' . Request('device') ?? Carbon::now();
-            // Return the token to be used in the api
+            // Return the sanctum token that will be used in the api
             $token = Auth::user()->createToken($tokenName)->plainTextToken;
 
             return response()->json([
@@ -47,6 +48,7 @@ class AuthApi extends Controller
 
     public function register(Request $request)
     {
+        // Validate the data
         $validator = Validator::make($request->all(), [
             'name'     => ['required', 'string', 'max:255'],
             'email'    => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -69,9 +71,10 @@ class AuthApi extends Controller
         UserVerifyEvent::dispatch($user);
 
         return response()->json([
-            'data' => 'User Created with success please verify your email',
+            'data' => 'User Created with success please verify your email.',
         ]);
     }
+
     // Check boot token
     public function checkConnection()
     {
@@ -82,11 +85,12 @@ class AuthApi extends Controller
             'status'   => true,
         ]);
     }
-    // CHeck if this url is valid
+
+    // Check if this url is valid
     public function checkUrl()
     {
         return response()->json([
-            'version'  => 'Connection successful',
+            'version'  => 'Connection successful.',
             'status'   => true,
         ]);
     }

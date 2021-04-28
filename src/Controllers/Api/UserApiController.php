@@ -10,7 +10,7 @@ use Mariojgt\Skeleton\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Mariojgt\Skeleton\Resource\UserResource;
 
-class UserApi extends Controller
+class UserApiController extends Controller
 {
     public function checkToken(Request $request)
     {

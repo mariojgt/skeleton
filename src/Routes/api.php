@@ -1,28 +1,31 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Mariojgt\Skeleton\Controllers\Api\AuthApi;
-use Mariojgt\Skeleton\Controllers\Api\UserApi;
+use Mariojgt\Skeleton\Controllers\Api\AuthApiControler;
+use Mariojgt\Skeleton\Controllers\Api\UserApiController;
 
 // Check url
 Route::group([
     'prefix' => 'api'
 ], function () {
     // Api example to Login
-    Route::get('/check-url', [AuthApi::class, 'checkUrl'])->name('check-url');
+    Route::get('/check-url', [AuthApiControler::class, 'checkUrl'])->name('check-url');
 });
 
-// Standard
+// Boot token required
 Route::group([
     'middleware' => ['boot_token'],
     'prefix' => 'api'
 ], function () {
     // Api example to Login
-    Route::post('/skeleton/api/login', [AuthApi::class, 'login'])->name('skeleton.api.login');
+    Route::post('/skeleton/api/login', [AuthApiControler::class, 'login'])
+        ->name('skeleton.api.login');
     // Api Example to Register
-    Route::post('/skeleton/api/register', [AuthApi::class, 'register'])->name('skeleton.api.register');
+    Route::post('/skeleton/api/register', [AuthApiControler::class, 'register'])
+        ->name('skeleton.api.register');
     // Api connection test
-    Route::post('/skeleton/api/check-boot-tooken', [AuthApi::class, 'checkConnection'])->name('skeleton.api.check-boot-tooken');
+    Route::post('/skeleton/api/check-boot-tooken', [AuthApiControler::class, 'checkConnection'])
+        ->name('skeleton.api.check-boot-tooken');
 });
 
 // Auth Route
@@ -31,9 +34,9 @@ Route::group([
     'prefix' => 'api'
 ], function () {
     // Check valid token
-    Route::post('/skeleton/api/check-token', [UserApi::class, 'checkToken'])->name('skeleton.api.check-token');
+    Route::post('/skeleton/api/check-token', [UserApiController::class, 'checkToken'])->name('skeleton.api.check-token');
 
     // Load user info
-    Route::post('/skeleton/api/user', [UserApi::class, 'userProfile'])->name('skeleton.api.user');
-    Route::post('/skeleton/api/user-update', [UserApi::class, 'userUpdateProfile'])->name('skeleton.api.user-update');
+    Route::post('/skeleton/api/user', [UserApiController::class, 'userProfile'])->name('skeleton.api.user');
+    Route::post('/skeleton/api/user-update', [UserApiController::class, 'userUpdateProfile'])->name('skeleton.api.user-update');
 });
