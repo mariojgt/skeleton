@@ -9,7 +9,7 @@ use Mariojgt\Skeleton\Controllers\Auth\LoginController;
 Route::group([
     'middleware' => ['web']
 ], function () {
-    // example page not required to be login
+    // Example page not required to be login
     Route::get('/skeleton', [HomeContoller::class, 'index'])->name('skeleton');
 });
 
