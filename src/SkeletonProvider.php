@@ -39,10 +39,12 @@ class SkeletonProvider extends ServiceProvider
 
         // Load skeleton views
         $this->loadViewsFrom(__DIR__.'/views', 'skeleton');
+
         // Load skeleton routes
         $this->loadRoutesFrom(__DIR__.'/Routes/web.php');
         $this->loadRoutesFrom(__DIR__.'/Routes/auth.php');
         $this->loadRoutesFrom(__DIR__.'/Routes/api.php');
+
         // Load Migrations
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
     }

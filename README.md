@@ -15,7 +15,7 @@ This Laravel packages contain a very simple structure for any kind of packages d
 - [ ] Dynamic form
 - [ ] Lightweight
 - [ ] Dark|light mode out of the box
-- [ ] Now with api read to use in mobile apps
+- [ ] Now with api read to use with a mobile aplication
 
 # Installation
 
