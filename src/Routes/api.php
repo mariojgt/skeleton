@@ -15,7 +15,7 @@ Route::group([
 // Boot token required
 Route::group([
     'middleware' => ['boot_token'],
-    'prefix' => 'api'
+    'prefix'     => 'api'
 ], function () {
     // Api example to Login
     Route::post('/skeleton/api/login', [AuthApiControler::class, 'login'])
@@ -31,7 +31,7 @@ Route::group([
 // Auth Route
 Route::group([
     'middleware' => ['auth:sanctum'],
-    'prefix' => 'api'
+    'prefix'     => 'api'
 ], function () {
     // Check valid token
     Route::post('/skeleton/api/check-token', [UserApiController::class, 'checkToken'])->name('skeleton.api.check-token');

@@ -8,7 +8,6 @@ use Illuminate\Foundation\Application;
 
 class BootTokenApi
 {
-
     public function __construct(Application $app, Request $request)
     {
         $this->app     = $app;
@@ -26,7 +25,7 @@ class BootTokenApi
     public function handle($request, Closure $next)
     {
         // This middler where will check if the request has the right token
-        // SInci this is sencible information you app need to have the token define
+        // Since this is sensible information you app need to have the token define
         // in the config file for secure purpuse
         // Returns header value with default as fallback
         //$request->header('some_header', 'default_value');
