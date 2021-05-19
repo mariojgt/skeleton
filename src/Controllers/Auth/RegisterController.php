@@ -4,13 +4,11 @@ namespace Mariojgt\Skeleton\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Auth\Events\Verified;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Mariojgt\Skeleton\Models\User;
 use Illuminate\Support\Facades\Redirect;
 use Mariojgt\Skeleton\Events\UserVerifyEvent;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Validation\Rules\Password;
 
 class RegisterController extends Controller
 {
@@ -26,11 +24,11 @@ class RegisterController extends Controller
             return  Redirect::back()->with('error', 'Sorry but registration has been disable.');
         }
 
-        // Validate the user
+        // Validate the user Note the smal update in the password verification
         $request->validate([
             'name'     => ['required', 'string', 'max:255'],
             'email'    => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'confirmed', Password::min(8)->uncompromised()],
         ]);
 
         $user           = new User();
