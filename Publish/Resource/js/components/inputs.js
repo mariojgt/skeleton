@@ -1,5 +1,6 @@
 window.$inputs = {};
 
+// This show or hide the password field
 window.$inputs.passwordToogle = function (id) {
     var field = document.querySelector('#'+id);
     if (field.attributes["type"].value == 'password') {
