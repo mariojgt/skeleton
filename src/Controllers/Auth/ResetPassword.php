@@ -15,11 +15,21 @@ use Illuminate\Auth\Events\PasswordReset;
 
 class ResetPassword extends Controller
 {
+    /**
+     * @return [blade view]
+     */
     public function index()
     {
         return view('skeleton::content.auth.forgot');
     }
 
+    /**
+     * Send a link so the user can reset the password
+     *
+     * @param Request $request
+     *
+     * @return [redirect]
+     */
     public function reset(Request $request)
     {
         $request->validate(['email' => 'required|email']);
@@ -31,11 +41,22 @@ class ResetPassword extends Controller
         return  Redirect::back()->with('success', 'Password link sent with success.');
     }
 
+    /**
+     * @param mixed $token
+     *
+     * @return [blade view]
+     */
     public function passwordReset($token)
     {
         return view('skeleton::content.auth.reset_password', compact('token'));
     }
 
+    /**
+     * Change the user password
+     * @param Request $request
+     *
+     * @return [Redirect]
+     */
     public function passwordChange(Request $request)
     {
         $request->validate([
@@ -43,7 +64,7 @@ class ResetPassword extends Controller
             'email'    => 'required|email',
             'password' => 'required|min:8|confirmed',
         ]);
-
+        // Using laravel default password reset
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function ($user, $password) use ($request) {

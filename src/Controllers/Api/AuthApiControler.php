@@ -13,6 +13,13 @@ use Validator;
 
 class AuthApiControler extends Controller
 {
+    /**
+     * Login the user using api
+     *
+     * @param Request $request
+     *
+     * @return [json]
+     */
     public function login(Request $request)
     {
         // Validate the user
@@ -46,6 +53,13 @@ class AuthApiControler extends Controller
         }
     }
 
+    /**
+     * Register the user using the api
+     *
+     * @param Request $request
+     *
+     * @return [json]
+     */
     public function register(Request $request)
     {
         // Validate the data
@@ -75,7 +89,12 @@ class AuthApiControler extends Controller
         ]);
     }
 
-    // Check boot token
+
+    /**
+     * Check boot token
+     *
+     * @return [json]
+     */
     public function checkConnection()
     {
         return response()->json([
@@ -86,7 +105,12 @@ class AuthApiControler extends Controller
         ]);
     }
 
-    // Check if this url is valid
+
+    /**
+     * Check if this url is valid
+     *
+     * @return [json]
+     */
     public function checkUrl()
     {
         return response()->json([

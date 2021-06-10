@@ -13,11 +13,21 @@ use Illuminate\Validation\Rules\Password;
 class RegisterController extends Controller
 {
 
+    /**
+     * @return [blade view]
+     */
     public function register()
     {
         return view('skeleton::content.auth.register');
     }
 
+    /**
+     * Register a new user to the website
+     *
+     * @param Request $request
+     *
+     * @return [redirect]
+     */
     public function userRegister(Request $request)
     {
         if (config('skeleton.register_enable') == false) {

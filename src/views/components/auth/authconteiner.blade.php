@@ -15,7 +15,7 @@
                 <div class="text-black dark:text-white" >
                     v{{ config('skeleton.version') }}
                     <br>
-                    <span class="text-xs">on March 1, 2021</span>
+                    <span class="text-xs">on June 10, 2021</span>
                 </div>
             </div>
         </div>

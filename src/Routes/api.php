@@ -8,7 +8,7 @@ use Mariojgt\Skeleton\Controllers\Api\UserApiController;
 Route::group([
     'prefix' => 'api'
 ], function () {
-    // Api example to Login
+    // Api to Login
     Route::get('/check-url', [AuthApiControler::class, 'checkUrl'])->name('check-url');
 });
 
@@ -17,10 +17,10 @@ Route::group([
     'middleware' => ['boot_token'],
     'prefix'     => 'api'
 ], function () {
-    // Api example to Login
+    // Api to Login
     Route::post('/skeleton/api/login', [AuthApiControler::class, 'login'])
         ->name('skeleton.api.login');
-    // Api Example to Register
+    // Api to Register
     Route::post('/skeleton/api/register', [AuthApiControler::class, 'register'])
         ->name('skeleton.api.register');
     // Api connection test

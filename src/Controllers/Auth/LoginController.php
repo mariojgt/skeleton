@@ -15,37 +15,29 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 class LoginController extends Controller
 {
+    /**
+     * @return [blade view]
+     */
     public function index()
     {
         return view('skeleton::content.auth.login');
     }
 
+    /**
+     * @return [blade view]
+     */
     public function register()
     {
         return view('skeleton::content.auth.register');
     }
 
-    public function userRegister(Request $request)
-    {
-        // Validate the user
-        $request->validate([
-            'name'     => ['required', 'string', 'max:255'],
-            'email'    => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-
-        $user           = new User();
-        $user->name     = Request('name');
-        $user->email    = Request('email');
-        $user->password = Hash::make(Request('password'));
-        $user->save();
-
-        // Send the verification to the user
-        event(new Registered($user));
-
-        return  Redirect::back()->with('success', 'success');
-    }
-
+    /**
+     * Try login the user
+     *
+     * @param Request $request
+     *
+     * @return [blade view]
+     */
     public function login(Request $request)
     {
         // Validate the user
@@ -63,6 +55,13 @@ class LoginController extends Controller
         }
     }
 
+    /**
+     * Logout the user and send to the login page
+     *
+     * @param Request $request
+     *
+     * @return [redirect]
+     */
     public function logout(Request $request)
     {
         Auth::logout();
@@ -70,6 +69,15 @@ class LoginController extends Controller
         return Redirect::route('login')->with('success', 'By :)');
     }
 
+    /**
+     * Verify the user account based in the link
+     *
+     * @param Request $request
+     * @param mixed $userId
+     * @param mixed $expiration
+     *
+     * @return [Redirect]
+     */
     public function verify(Request $request, $userId, $expiration)
     {
         $userId     = decrypt($userId);
@@ -92,6 +100,11 @@ class LoginController extends Controller
         return Redirect::route('login')->with('success', 'User verify with success!');
     }
 
+    /**
+     * Double check if the user needs verification before go the the next request
+     *
+     * @return [Redirect]
+     */
     public function needVerify()
     {
         // Logout the user and redirect him to the home page

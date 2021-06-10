@@ -21,7 +21,7 @@ class SendUserVerifyListener
     }
 
     /**
-     * Handle the event.
+     * Send the user a link so we can verify the email
      *
      * @param  UserVerifyEvent  $event
      * @return void

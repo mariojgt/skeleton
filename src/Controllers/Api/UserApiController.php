@@ -12,6 +12,11 @@ use Mariojgt\Skeleton\Resource\UserResource;
 
 class UserApiController extends Controller
 {
+    /**
+     * @param Request $request
+     *
+     * @return [json]
+     */
     public function checkToken(Request $request)
     {
         return response()->json([
@@ -19,6 +24,11 @@ class UserApiController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return [json]
+     */
     public function userProfile(Request $request)
     {
         return response()->json([
@@ -26,6 +36,11 @@ class UserApiController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return [json]
+     */
     public function userUpdateProfile(Request $request)
     {
         // Validate the user
