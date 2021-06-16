@@ -47,7 +47,7 @@ class SkeletonProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__ . '/Routes/api.php');
 
         // Load Migrations
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/Database/Migrations');
     }
 
     /**
