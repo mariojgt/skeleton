@@ -1,13 +1,13 @@
 ![image info](https://raw.githubusercontent.com/mariojgt/skeleton/master/Publish/Public/image/skeleton.png)
 
 # Skeleton
-This Laravel packages contain a very simple structure for any kind of packages development for Laravel.
+This Laravel packages contain a very simple structure for any kind of packages development for Laravel
 
 # Features
 
 - [ ] Clean and basic start point in Laravel package development.
 - [ ] Webpack setup with tailwind css ,sweetalert2 and vue3 basic setup.
-- [ ] Simple out of the box Laravel Authentication.
+- [ ] Simple out of the box Laravel Authentication, using the package.
 - [ ] Example Laravel components, and layout structure.
 - [ ] Tailwind with npm presetup for runing with packages.
 - [ ] Republish command
@@ -73,5 +73,3 @@ This package purpose is to give a fresh start for a new package so you can use t
 ```php
 php artisan install:skeleton
 ```
-
-1.0.4
