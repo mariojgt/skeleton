@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'version'         => '1.0.10',   // Skeleton version
+    'version'         => '1.0.11',   // Skeleton version
     'register_enable' => false,     // if true users can register
     // Needed for the laravel sanctum in this way if you building a app you can make sure
     // So no one keeps pingin your aplication without knowing you key
