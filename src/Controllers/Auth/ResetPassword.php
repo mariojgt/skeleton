@@ -4,10 +4,7 @@ namespace Mariojgt\Skeleton\Controllers\Auth;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Mariojgt\Skeleton\Models\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Redirect;
@@ -34,7 +31,7 @@ class ResetPassword extends Controller
     {
         $request->validate(['email' => 'required|email']);
 
-        $status = Password::sendResetLink(
+        Password::sendResetLink(
             $request->only('email')
         );
 
@@ -65,7 +62,7 @@ class ResetPassword extends Controller
             'password' => 'required|min:8|confirmed',
         ]);
         // Using laravel default password reset
-        $status = Password::reset(
+        Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function ($user, $password) use ($request) {
                 $user->forceFill([

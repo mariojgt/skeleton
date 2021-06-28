@@ -3,8 +3,6 @@
 namespace Mariojgt\Skeleton\Listeners;
 
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Mariojgt\Skeleton\Mail\UserVerifyEmail;
 use Mariojgt\Skeleton\Events\UserVerifyEvent;
 

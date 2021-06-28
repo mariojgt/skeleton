@@ -8,8 +8,8 @@ use Mariojgt\Skeleton\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Mariojgt\Skeleton\Events\UserVerifyEvent;
-use Validator;
 
 class AuthApiControler extends Controller
 {

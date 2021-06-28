@@ -6,7 +6,6 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Mariojgt\Skeleton\Models\User;
 use Illuminate\Support\Carbon;
 
 class UserVerifyEmail extends Mailable implements ShouldQueue
