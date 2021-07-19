@@ -2,11 +2,11 @@
 
 namespace Mariojgt\Skeleton\Controllers\Api;
 
-use Illuminate\Http\Request;
-use Mariojgt\Skeleton\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Mariojgt\Skeleton\Models\User;
 use Mariojgt\Skeleton\Resource\UserResource;
 
 class UserApiController extends Controller
@@ -68,8 +68,8 @@ class UserApiController extends Controller
         }
         // Update the user profile
         $user = User::find(auth()->user()->id);
-        $user->name     = Request('name');
-        $user->email    = Request('email');
+        $user->name = Request('name');
+        $user->email = Request('email');
         if (!empty(Request('password'))) {
             $user->password = Hash::make(Request('password'));
         }

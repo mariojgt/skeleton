@@ -2,19 +2,19 @@
 
 namespace Mariojgt\Skeleton\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Mariojgt\Skeleton\Models\User;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Mariojgt\Skeleton\Events\UserVerifyEvent;
+use Mariojgt\Skeleton\Models\User;
 
 class AuthApiControler extends Controller
 {
     /**
-     * Login the user using api
+     * Login the user using api.
      *
      * @param Request $request
      *
@@ -37,7 +37,7 @@ class AuthApiControler extends Controller
         // Try login
         if (Auth::attempt($credentials)) {
             // Create the device name
-            $tokenName = $_SERVER['SERVER_NAME'] . '-' . Request('device') ?? Carbon::now();
+            $tokenName = $_SERVER['SERVER_NAME'].'-'.Request('device') ?? Carbon::now();
             // Return the sanctum token that will be used in the api
             $token = Auth::user()->createToken($tokenName)->plainTextToken;
 
@@ -54,7 +54,7 @@ class AuthApiControler extends Controller
     }
 
     /**
-     * Register the user using the api
+     * Register the user using the api.
      *
      * @param Request $request
      *
@@ -75,9 +75,9 @@ class AuthApiControler extends Controller
         }
 
         // Create the user
-        $user           = new User();
-        $user->name     = Request('name');
-        $user->email    = Request('email');
+        $user = new User();
+        $user->name = Request('name');
+        $user->email = Request('email');
         $user->password = Hash::make(Request('password'));
         $user->save();
 
@@ -89,9 +89,8 @@ class AuthApiControler extends Controller
         ]);
     }
 
-
     /**
-     * Check boot token
+     * Check boot token.
      *
      * @return [json]
      */
@@ -105,9 +104,8 @@ class AuthApiControler extends Controller
         ]);
     }
 
-
     /**
-     * Check if this url is valid
+     * Check if this url is valid.
      *
      * @return [json]
      */

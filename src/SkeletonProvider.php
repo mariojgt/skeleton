@@ -39,15 +39,15 @@ class SkeletonProvider extends ServiceProvider
         );
 
         // Load skeleton views
-        $this->loadViewsFrom(__DIR__ . '/views', 'skeleton');
+        $this->loadViewsFrom(__DIR__.'/views', 'skeleton');
 
         // Load skeleton routes
-        $this->loadRoutesFrom(__DIR__ . '/Routes/web.php');
-        $this->loadRoutesFrom(__DIR__ . '/Routes/auth.php');
-        $this->loadRoutesFrom(__DIR__ . '/Routes/api.php');
+        $this->loadRoutesFrom(__DIR__.'/Routes/web.php');
+        $this->loadRoutesFrom(__DIR__.'/Routes/auth.php');
+        $this->loadRoutesFrom(__DIR__.'/Routes/api.php');
 
         // Load Migrations
-        $this->loadMigrationsFrom(__DIR__ . '/Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__.'/Database/Migrations');
     }
 
     /**
@@ -64,22 +64,22 @@ class SkeletonProvider extends ServiceProvider
     {
         // Publish the npm
         $this->publishes([
-            __DIR__ . '/../Publish/Npm/' => base_path()
+            __DIR__.'/../Publish/Npm/' => base_path(),
         ]);
 
         // Publish the resource
         $this->publishes([
-            __DIR__ . '/../Publish/Resource/' => resource_path('vendor/Skeleton/')
+            __DIR__.'/../Publish/Resource/' => resource_path('vendor/Skeleton/'),
         ]);
 
         // Publish the public folder with the css and javascript pre compile
         $this->publishes([
-            __DIR__ . '/../Publish/Public/' => public_path('vendor/Skeleton/')
+            __DIR__.'/../Publish/Public/' => public_path('vendor/Skeleton/'),
         ]);
 
         // Publish the public folder
         $this->publishes([
-            __DIR__ . '/../Publish/Config/' => config_path('')
+            __DIR__.'/../Publish/Config/' => config_path(''),
         ]);
     }
 }

@@ -3,8 +3,8 @@
 namespace Mariojgt\Skeleton\Listeners;
 
 use Illuminate\Support\Facades\Mail;
-use Mariojgt\Skeleton\Mail\UserVerifyEmail;
 use Mariojgt\Skeleton\Events\UserVerifyEvent;
+use Mariojgt\Skeleton\Mail\UserVerifyEmail;
 
 class SendUserVerifyListener
 {
@@ -19,9 +19,10 @@ class SendUserVerifyListener
     }
 
     /**
-     * Send the user a link so we can verify the email
+     * Send the user a link so we can verify the email.
      *
-     * @param  UserVerifyEvent  $event
+     * @param UserVerifyEvent $event
+     *
      * @return void
      */
     public function handle(UserVerifyEvent $event)
