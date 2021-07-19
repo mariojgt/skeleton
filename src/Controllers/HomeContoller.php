@@ -2,7 +2,6 @@
 
 namespace Mariojgt\Skeleton\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class HomeContoller extends Controller

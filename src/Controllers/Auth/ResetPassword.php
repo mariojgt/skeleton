@@ -2,13 +2,13 @@
 
 namespace Mariojgt\Skeleton\Controllers\Auth;
 
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Str;
 
 class ResetPassword extends Controller
 {
@@ -21,7 +21,7 @@ class ResetPassword extends Controller
     }
 
     /**
-     * Send a link so the user can reset the password
+     * Send a link so the user can reset the password.
      *
      * @param Request $request
      *
@@ -49,7 +49,8 @@ class ResetPassword extends Controller
     }
 
     /**
-     * Change the user password
+     * Change the user password.
+     *
      * @param Request $request
      *
      * @return [Redirect]
@@ -64,9 +65,9 @@ class ResetPassword extends Controller
         // Using laravel default password reset
         Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
-            function ($user, $password) use ($request) {
+            function ($user, $password) {
                 $user->forceFill([
-                    'password' => Hash::make($password)
+                    'password' => Hash::make($password),
                 ])->save();
 
                 $user->setRememberToken(Str::random(60));

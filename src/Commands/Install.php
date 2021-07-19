@@ -2,8 +2,8 @@
 
 namespace Mariojgt\Skeleton\Commands;
 
-use Illuminate\Console\Command;
 use Artisan;
+use Illuminate\Console\Command;
 
 class Install extends Command
 {
@@ -41,13 +41,13 @@ class Install extends Command
         // Copy the need file to make the skeleton to work
         Artisan::call('vendor:publish', [
             '--provider' => 'Mariojgt\Skeleton\SkeletonProvider',
-            '--force'    => true
+            '--force'    => true,
         ]);
 
         // Copy the need file to make the laravel sanctum work
         Artisan::call('vendor:publish', [
             '--provider' => 'Laravel\Sanctum\SanctumServiceProvider',
-            '--force'    => true
+            '--force'    => true,
         ]);
 
         // Migrate

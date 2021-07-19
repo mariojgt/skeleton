@@ -2,17 +2,16 @@
 
 namespace Mariojgt\Skeleton\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Mariojgt\Skeleton\Models\User;
 use Illuminate\Support\Facades\Redirect;
-use Mariojgt\Skeleton\Events\UserVerifyEvent;
 use Illuminate\Validation\Rules\Password;
+use Mariojgt\Skeleton\Events\UserVerifyEvent;
+use Mariojgt\Skeleton\Models\User;
 
 class RegisterController extends Controller
 {
-
     /**
      * @return [blade view]
      */
@@ -22,7 +21,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Register a new user to the website
+     * Register a new user to the website.
      *
      * @param Request $request
      *
@@ -41,9 +40,9 @@ class RegisterController extends Controller
             'password' => ['required', 'confirmed', Password::min(8)->uncompromised()],
         ]);
 
-        $user           = new User();
-        $user->name     = Request('name');
-        $user->email    = Request('email');
+        $user = new User();
+        $user->name = Request('name');
+        $user->email = Request('email');
         $user->password = Hash::make(Request('password'));
         $user->save();
 

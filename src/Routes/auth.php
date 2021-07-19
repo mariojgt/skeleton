@@ -1,15 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Mariojgt\Skeleton\Controllers\Auth\ResetPassword;
 use Mariojgt\Skeleton\Controllers\Auth\LoginController;
 use Mariojgt\Skeleton\Controllers\Auth\RegisterController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
+use Mariojgt\Skeleton\Controllers\Auth\ResetPassword;
 
 // Login | Register Route need to be logout to view this page
 Route::group([
-    'middleware' => ['web', 'guest']
+    'middleware' => ['web', 'guest'],
 ], function () {
     // User Login
     Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -29,7 +27,7 @@ Route::group([
 
 // User verify account
 Route::group([
-    'middleware' => ['web']
+    'middleware' => ['web'],
 ], function () {
     // War the user need to be verify
     Route::get('/email/verify', [LoginController::class, 'needVerify'])->name('verification.notice');

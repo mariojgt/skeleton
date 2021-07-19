@@ -2,13 +2,13 @@
 
 namespace Mariojgt\Skeleton\Controllers\Auth;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Verified;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Mariojgt\Skeleton\Models\User;
 use Illuminate\Support\Facades\Redirect;
+use Mariojgt\Skeleton\Models\User;
 
 class LoginController extends Controller
 {
@@ -29,7 +29,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Try login the user
+     * Try login the user.
      *
      * @param Request $request
      *
@@ -53,7 +53,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Logout the user and send to the login page
+     * Logout the user and send to the login page.
      *
      * @param Request $request
      *
@@ -67,20 +67,20 @@ class LoginController extends Controller
     }
 
     /**
-     * Verify the user account based in the link
+     * Verify the user account based in the link.
      *
      * @param Request $request
-     * @param mixed $userId
-     * @param mixed $expiration
+     * @param mixed   $userId
+     * @param mixed   $expiration
      *
      * @return [Redirect]
      */
     public function verify(Request $request, $userId, $expiration)
     {
-        $userId     = decrypt($userId);
+        $userId = decrypt($userId);
         $expiration = decrypt($expiration);
-        $nowDate    = Carbon::now();
-        $user       = User::findOrFail($userId);
+        $nowDate = Carbon::now();
+        $user = User::findOrFail($userId);
 
         // Check if is expired
         if ($nowDate > $expiration) {
@@ -98,7 +98,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Double check if the user needs verification before go the the next request
+     * Double check if the user needs verification before go the the next request.
      *
      * @return [Redirect]
      */

@@ -10,9 +10,11 @@ use Illuminate\Support\Carbon;
 
 class UserVerifyEmail extends Mailable implements ShouldQueue
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     public $user;
+
     /**
      * Create a new message instance.
      *
@@ -30,8 +32,9 @@ class UserVerifyEmail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        $date       = Carbon::now()->addMinutes(60);
+        $date = Carbon::now()->addMinutes(60);
         $validRoute = route('user.verify', [encrypt($this->user->id), encrypt($date)]);
+
         return $this->from(env('MAIL_FROM_ADDRESS'))
                ->markdown('skeleton::email.user_verify', compact('validRoute'));
     }
