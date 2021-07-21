@@ -32,10 +32,9 @@ class SkeletonProvider extends ServiceProvider
             ]);
         }
 
-        // Loading CUstom the middlewhere
+        // Loading Custom middlewhere
         $this->app['router']->aliasMiddleware(
-            'boot_token',
-            \Mariojgt\Skeleton\Middleware\BootTokenApi::class
+            'boot_token', \Mariojgt\Skeleton\Middleware\BootTokenApi::class
         );
 
         // Load skeleton views

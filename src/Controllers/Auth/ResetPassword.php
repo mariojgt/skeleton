@@ -35,7 +35,7 @@ class ResetPassword extends Controller
             $request->only('email')
         );
 
-        return  Redirect::back()->with('success', 'Password link sent with success.');
+        return Redirect::back()->with('success', 'Password link sent with success.');
     }
 
     /**
@@ -76,6 +76,7 @@ class ResetPassword extends Controller
             }
         );
 
-        return redirect()->intended('home_dashboard')->with('success', 'Password changed with success.');
+        return redirect()->intended('home_dashboard')
+            ->with('success', 'Password changed with success.');
     }
 }

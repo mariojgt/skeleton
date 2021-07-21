@@ -44,8 +44,8 @@ class LoginController extends Controller
         ]);
 
         $credentials = $request->only('email', 'password');
-
-        if (Auth::attempt($credentials)) {
+        // Try login
+        if (Auth::guard(config('skeleton.user_guard'))->attempt($credentials)) {
             return Redirect::route('home_dashboard')->with('success', 'Welcome :)');
         } else {
             return  Redirect::back()->with('error', 'Credentials do not match');
@@ -77,10 +77,10 @@ class LoginController extends Controller
      */
     public function verify(Request $request, $userId, $expiration)
     {
-        $userId = decrypt($userId);
+        $userId     = decrypt($userId);
         $expiration = decrypt($expiration);
-        $nowDate = Carbon::now();
-        $user = User::findOrFail($userId);
+        $nowDate    = Carbon::now();
+        $user       = User::findOrFail($userId);
 
         // Check if is expired
         if ($nowDate > $expiration) {

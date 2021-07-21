@@ -21,7 +21,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Register a new user to the website.
+     * Register a new user to the aplication.
      *
      * @param Request $request
      *
@@ -33,7 +33,7 @@ class RegisterController extends Controller
             return  Redirect::back()->with('error', 'Sorry but registration has been disable.');
         }
 
-        // Validate the user Note the smal update in the password verification
+        // Validate the user Note the small update in the password verification
         $request->validate([
             'name'     => ['required', 'string', 'max:255'],
             'email'    => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -49,6 +49,7 @@ class RegisterController extends Controller
         // Send the verification to the user
         UserVerifyEvent::dispatch($user);
 
-        return  Redirect::back()->with('success', 'Account Created with success, Please check you email for a verification link.');
+        return Redirect::back()
+            ->with('success', 'Account Created with success, Please check you email for a verification link.');
     }
 }

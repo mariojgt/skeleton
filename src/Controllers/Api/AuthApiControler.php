@@ -34,8 +34,9 @@ class AuthApiControler extends Controller
         }
         // Credentials for the login
         $credentials = $request->only('email', 'password');
+
         // Try login
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard(config('skeleton.user_guard'))->attempt($credentials)) {
             // Create the device name
             $tokenName = $_SERVER['SERVER_NAME'].'-'.Request('device') ?? Carbon::now();
             // Return the sanctum token that will be used in the api

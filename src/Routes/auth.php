@@ -29,7 +29,7 @@ Route::group([
 Route::group([
     'middleware' => ['web'],
 ], function () {
-    // War the user need to be verify
+    // Warn the user need to be verify
     Route::get('/email/verify', [LoginController::class, 'needVerify'])->name('verification.notice');
 
     // Login to verify the user
