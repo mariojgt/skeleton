@@ -9,6 +9,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Mariojgt\Skeleton\Models\User;
+use Mariojgt\Skeleton\Events\UserVerifyEvent;
 
 class LoginController extends Controller
 {
@@ -44,7 +45,8 @@ class LoginController extends Controller
         ]);
 
         $credentials = $request->only('email', 'password');
-        // Try login
+
+        // Try login Note the you have the guard
         if (Auth::guard(config('skeleton.user_guard'))->attempt($credentials)) {
             return Redirect::route('home_dashboard')->with('success', 'Welcome :)');
         } else {
@@ -77,10 +79,10 @@ class LoginController extends Controller
      */
     public function verify(Request $request, $userId, $expiration)
     {
+        $user       = User::findOrFail($userId);
         $userId     = decrypt($userId);
         $expiration = decrypt($expiration);
         $nowDate    = Carbon::now();
-        $user       = User::findOrFail($userId);
 
         // Check if is expired
         if ($nowDate > $expiration) {
@@ -104,6 +106,12 @@ class LoginController extends Controller
      */
     public function needVerify()
     {
+        // In here we check if we want to send the user a need verification
+        if (config('skeleton.send_verification')) {
+            // Send the verification to the user
+            UserVerifyEvent::dispatch(Auth::user());
+        }
+
         // Logout the user and redirect him to the home page
         Auth::logout();
 

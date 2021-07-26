@@ -35,7 +35,6 @@ Route::group([
 ], function () {
     // Check valid token
     Route::post('/skeleton/api/check-token', [UserApiController::class, 'checkToken'])->name('skeleton.api.check-token');
-
     // Load user info
     Route::post('/skeleton/api/user', [UserApiController::class, 'userProfile'])->name('skeleton.api.user');
     Route::post('/skeleton/api/user-update', [UserApiController::class, 'userUpdateProfile'])->name('skeleton.api.user-update');

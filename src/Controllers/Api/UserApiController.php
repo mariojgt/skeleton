@@ -66,6 +66,7 @@ class UserApiController extends Controller
                 return response()->json($validator->errors(), 400);
             }
         }
+
         // Update the user profile
         $user = User::find(auth()->user()->id);
         $user->name = Request('name');

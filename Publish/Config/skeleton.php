@@ -14,4 +14,7 @@ return [
     // In here for example you have have a admin guard login or a diferent user guard
     // default is web
     'user_guard' => 'web',
+
+    // Send the email of user verification once the user try to login
+    'send_verification' => true,
 ];
