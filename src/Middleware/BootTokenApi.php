@@ -25,7 +25,7 @@ class BootTokenApi
      */
     public function handle($request, Closure $next)
     {
-        // This middler where will check if the request has the right token
+        // This Middleware where will check if the request has the right token
         // Since this is sensible information you app need to have the token define
         // in the config file for secure purpuse
         // Returns header value with default as fallback
