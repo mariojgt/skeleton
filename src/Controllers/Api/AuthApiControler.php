@@ -1,6 +1,6 @@
 <?php
 
-namespace Mariojgt\Skeleton\Controllers\Api;
+namespace Mariojgt\Unityuser\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Mariojgt\Skeleton\Events\UserVerifyEvent;
-use Mariojgt\Skeleton\Models\User;
+use Mariojgt\Unityuser\Events\UserVerifyEvent;
+use Mariojgt\Unityuser\Models\User;
 
 class AuthApiControler extends Controller
 {
@@ -36,7 +36,7 @@ class AuthApiControler extends Controller
         $credentials = $request->only('email', 'password');
 
         // Try login
-        if (Auth::guard(config('skeleton.user_guard'))->attempt($credentials)) {
+        if (Auth::guard(config('unityuser.user_guard'))->attempt($credentials)) {
             // Create the device name
             $tokenName = $_SERVER['SERVER_NAME'].'-'.Request('device') ?? Carbon::now();
             // Return the sanctum token that will be used in the api
@@ -99,7 +99,7 @@ class AuthApiControler extends Controller
     {
         return response()->json([
             'app_name' => env('APP_NAME'),
-            'version'  => config('skeleton.version'),
+            'version'  => config('unityuser.version'),
             'message'  => 'Boot Token authentication with success',
             'status'   => true,
         ]);

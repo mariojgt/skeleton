@@ -2,23 +2,32 @@ window.$inputs = {};
 
 // This show or hide the password field
 window.$inputs.passwordToogle = function (id) {
-    var field = document.querySelector('#'+id);
-    if (field.attributes["type"].value == 'password') {
-        field.attributes["type"].value = 'text';
+    var field = document.querySelector("#" + id);
+    if (field.attributes["type"].value == "password") {
+        field.attributes["type"].value = "text";
     } else {
-        field.attributes["type"].value = 'password';
+        field.attributes["type"].value = "password";
     }
-}
+};
 
 // Function that enable the dark mode
 window.$inputs.lightToogle = function () {
-    var element = document.getElementsByTagName('html');
+    var element = document.getElementsByTagName("html");
     // Toogle dark mode
     element[0].classList.toggle("dark");
     // check if has the class
     if (element[0].classList.contains("dark")) {
-        console.log('dark mode enable');
+        console.log("dark mode enable");
     } else {
-        console.log('dark mode disable');
+        console.log("dark mode disable");
     }
-}
+};
+
+// Modal confimation delete
+window.$inputs.modalDelete = function (route, reload = false) {
+    if (reload) {
+        location.reload();
+    } else {
+        window.location.href = route;
+    }
+};

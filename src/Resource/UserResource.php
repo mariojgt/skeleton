@@ -1,6 +1,6 @@
 <?php
 
-namespace Mariojgt\Skeleton\Resource;
+namespace Mariojgt\Unityuser\Resource;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 

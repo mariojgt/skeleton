@@ -1,8 +1,10 @@
 <?php
 
-namespace Mariojgt\Skeleton\Controllers;
+namespace Mariojgt\Unityuser\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Mariojgt\Onixserver\Helpers\ApiHelper;
 
 class DashboardController extends Controller
 {
@@ -11,6 +13,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('skeleton::content.dashboard.index');
+
+        // Get the user key information
+        $apiManager = new ApiHelper();
+        $userKey    = $apiManager->getUserKeyInfo(Auth::user());
+
+
+        return view('unity-user::content.dashboard.index', compact('userKey'));
     }
 }

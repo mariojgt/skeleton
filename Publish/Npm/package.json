@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.2",
+        "daisyui": "^1.14.0",
         "sweetalert2": "^9.17.2",
         "tailwindcss": "^2.0.1",
         "toastify-js": "^1.9.3",

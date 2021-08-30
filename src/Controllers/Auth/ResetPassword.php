@@ -1,6 +1,6 @@
 <?php
 
-namespace Mariojgt\Skeleton\Controllers\Auth;
+namespace Mariojgt\Unityuser\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\PasswordReset;
@@ -17,7 +17,7 @@ class ResetPassword extends Controller
      */
     public function index()
     {
-        return view('skeleton::content.auth.forgot');
+        return view('unity-user::content.auth.forgot');
     }
 
     /**
@@ -45,7 +45,7 @@ class ResetPassword extends Controller
      */
     public function passwordReset($token)
     {
-        return view('skeleton::content.auth.reset_password', compact('token'));
+        return view('unity-user::content.auth.reset_password', compact('token'));
     }
 
     /**

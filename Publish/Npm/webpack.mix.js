@@ -11,19 +11,19 @@ const mix = require('laravel-mix');
  |
  */
 // Normal js files
-mix.js('resources/vendor/Skeleton/js/app.js', 'public/vendor/Skeleton/js')
+mix.js('resources/vendor/Unityuser/js/app.js', 'public/vendor/Unityuser/js')
     .sourceMaps()
     .version();
 
 // Vue js example
-mix.js('resources/vendor/Skeleton/js/vue.js', 'public/vendor/Skeleton/js')
+mix.js('resources/vendor/Unityuser/js/vue.js', 'public/vendor/Unityuser/js')
     .vue({version: 3})
     .sourceMaps()
     .version();
 
 const tailwindcss = require('tailwindcss')
 
-mix.sass('resources/vendor/Skeleton/sass/app.scss', 'public/vendor/Skeleton/css')
+mix.sass('resources/vendor/Unityuser/sass/app.scss', 'public/vendor/Unityuser/css')
    .options({
       processCssUrls: false,
       postCss: [ tailwindcss('tailwind.config.js') ],

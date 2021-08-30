@@ -1,6 +1,6 @@
 {
-    "name": "mariojgt/skeleton",
-    "description": "A Laravel Package Skeleton, a quick start for new laravel Packages",
+    "name": "mariojgt/unity-user",
+    "description": "A Laravel Package Unityuser, a quick start for new laravel Packages",
     "keywords": [
         "laravel"
     ],
@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Mariojgt\\Skeleton\\": "src"
+            "Mariojgt\\Unityuser\\": "src"
         }
     },
 
@@ -31,7 +31,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Mariojgt\\Skeleton\\SkeletonProvider"
+                "Mariojgt\\Unityuser\\UnityuserProvider"
             ]
         }
     },

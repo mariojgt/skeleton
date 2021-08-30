@@ -1,15 +1,15 @@
 <?php
 
-namespace Mariojgt\Skeleton;
+namespace Mariojgt\Unityuser;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
-use Mariojgt\Skeleton\Commands\Install;
-use Mariojgt\Skeleton\Commands\Republish;
-use Mariojgt\Skeleton\Events\UserVerifyEvent;
-use Mariojgt\Skeleton\Listeners\SendUserVerifyListener;
+use Mariojgt\Unityuser\Commands\Install;
+use Mariojgt\Unityuser\Commands\Republish;
+use Mariojgt\Unityuser\Events\UserVerifyEvent;
+use Mariojgt\Unityuser\Listeners\SendUserVerifyListener;
 
-class SkeletonProvider extends ServiceProvider
+class UnityuserProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -34,13 +34,13 @@ class SkeletonProvider extends ServiceProvider
 
         // Loading Custom middlewhere
         $this->app['router']->aliasMiddleware(
-            'boot_token', \Mariojgt\Skeleton\Middleware\BootTokenApi::class
+            'boot_token', \Mariojgt\Unityuser\Middleware\BootTokenApi::class
         );
 
-        // Load skeleton views
-        $this->loadViewsFrom(__DIR__.'/views', 'skeleton');
+        // Load unity-user views
+        $this->loadViewsFrom(__DIR__.'/views', 'unity-user');
 
-        // Load skeleton routes
+        // Load unity-user routes
         $this->loadRoutesFrom(__DIR__.'/Routes/web.php');
         $this->loadRoutesFrom(__DIR__.'/Routes/auth.php');
         $this->loadRoutesFrom(__DIR__.'/Routes/api.php');
@@ -68,12 +68,12 @@ class SkeletonProvider extends ServiceProvider
 
         // Publish the resource
         $this->publishes([
-            __DIR__.'/../Publish/Resource/' => resource_path('vendor/Skeleton/'),
+            __DIR__.'/../Publish/Resource/' => resource_path('vendor/Unityuser/'),
         ]);
 
         // Publish the public folder with the css and javascript pre compile
         $this->publishes([
-            __DIR__.'/../Publish/Public/' => public_path('vendor/Skeleton/'),
+            __DIR__.'/../Publish/Public/' => public_path('vendor/Unityuser/'),
         ]);
 
         // Publish the public folder

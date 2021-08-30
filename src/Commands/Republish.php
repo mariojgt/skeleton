@@ -1,6 +1,6 @@
 <?php
 
-namespace Mariojgt\Skeleton\Commands;
+namespace Mariojgt\Unityuser\Commands;
 
 use File;
 use Illuminate\Console\Command;
@@ -12,7 +12,7 @@ class Republish extends Command
      *
      * @var string
      */
-    protected $signature = 'republish:skeleton';
+    protected $signature = 'republish:unity-user';
 
     /**
      * The console command description.
@@ -42,13 +42,13 @@ class Republish extends Command
         $bar->start();
 
         // First we move the resources where we keep the css and js files
-        $targetFolderResource = resource_path('vendor/Skeleton/');
+        $targetFolderResource = resource_path('vendor/Unityuser/');
         $destitionResource = __DIR__.'/../../Publish/Resource';
         File::copyDirectory($targetFolderResource, $destitionResource);
         $bar->advance(); // Little Progress bar
 
         // Now we move the already compiles files from the public
-        $targetFolderPublic = public_path('vendor/Skeleton/');
+        $targetFolderPublic = public_path('vendor/Unityuser/');
         $destitionPublic = __DIR__.'/../../Publish/Public';
         File::copyDirectory($targetFolderPublic, $destitionPublic);
         $bar->advance(); // Little Progress bar

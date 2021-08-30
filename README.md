@@ -1,6 +1,6 @@
-![image info](https://raw.githubusercontent.com/mariojgt/skeleton/master/Publish/Public/image/skeleton.png)
+![image info](https://raw.githubusercontent.com/mariojgt/unity-user/master/Publish/Public/image/unity-user.png)
 
-# Skeleton
+# Unityuser
 This Laravel packages contain a very simple structure for any kind of packages development for Laravel
 
 # Features
@@ -23,12 +23,12 @@ You have 2 options.
 
 ### First option via composer
 
-1. composer require mariojgt/skeleton
+1. composer require mariojgt/unity-user
 2. php artsain vendor:publish --force  (select the package number)
 
 ### Second Option gitclone (Recommended if you like to change and make to your own)
 
-1. git clone https://github.com/mariojgt/skeleton
+1. git clone https://github.com/mariojgt/unity-user
 
 2. Setup you composer to use local VCS
 
@@ -36,7 +36,7 @@ You have 2 options.
    "repositories": [
            {
                "type" : "path",
-               "url": "packages/skeleton", // Path to your local folder package
+               "url": "packages/unity-user", // Path to your local folder package
                "options": {
                    "symlink": true
                }
@@ -49,7 +49,7 @@ You have 2 options.
            "guzzlehttp/guzzle": "^7.0.1",//Example
            "laravel/framework": "^8.12",//Example
            "laravel/tinker": "^2.5",//Example
-           "mariojgt/skeleton": "@dev"// Here is where you add the package reference
+           "mariojgt/unity-user": "@dev"// Here is where you add the package reference
        },
    ```
 
@@ -60,16 +60,16 @@ You have 2 options.
 The following commands
 
 ```php
-php artisan republish:skeleton
+php artisan republish:unity-user
 ```
 
 Will move you changes in your resources like the js or css back to the packages useful to speed up development.
 
 # Packages info
 
-This package purpose is to give a fresh start for a new package so you can use those premade tools or just delete and use the package skeleton, note the by default the system don't allow registration but you can change that i the skeleton config file.
+This package purpose is to give a fresh start for a new package so you can use those premade tools or just delete and use the package unity-user, note the by default the system don't allow registration but you can change that i the unity-user config file.
 # Easy way to install
 
 ```php
-php artisan install:skeleton
+php artisan install:unity-user
 ```

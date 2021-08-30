@@ -4,7 +4,7 @@ module.exports = {
     darkMode: 'class',
     purge: [
         // Path to my php view it will only purge stuf we goin to use
-        "./vendor/mariojgt/skeleton/src/views/**/*.php",
+        "./vendor/mariojgt/unity-user/src/views/**/*.php",
     ],
     theme: {
       extend: {},
@@ -14,5 +14,5 @@ module.exports = {
           textOpacity: ['dark']
         }
     },
-    plugins: [],
+    plugins: [require("daisyui")],
   }

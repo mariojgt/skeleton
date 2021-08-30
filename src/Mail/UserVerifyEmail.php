@@ -1,6 +1,6 @@
 <?php
 
-namespace Mariojgt\Skeleton\Mail;
+namespace Mariojgt\Unityuser\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -36,6 +36,6 @@ class UserVerifyEmail extends Mailable implements ShouldQueue
         $validRoute = route('user.verify', [encrypt($this->user->id), encrypt($date)]);
 
         return $this->from(env('MAIL_FROM_ADDRESS'))
-               ->markdown('skeleton::email.user_verify', compact('validRoute'));
+               ->markdown('unity-user::email.user_verify', compact('validRoute'));
     }
 }
