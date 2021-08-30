@@ -71,5 +71,6 @@ This package purpose is to give a fresh start for a new package so you can use t
 # Easy way to install
 
 ```php
-php artisan install:skeleton
+php artisan install:skeleton 
+    
 ```
