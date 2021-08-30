@@ -1,6 +1,6 @@
 <?php
 
-namespace Mariojgt\Unityuser\Events;
+namespace Mariojgt\Skeleton\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;

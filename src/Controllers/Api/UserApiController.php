@@ -1,13 +1,13 @@
 <?php
 
-namespace Mariojgt\Unityuser\Controllers\Api;
+namespace Mariojgt\Skeleton\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Mariojgt\Unityuser\Models\User;
-use Mariojgt\Unityuser\Resource\UserResource;
+use Mariojgt\Skeleton\Models\User;
+use Mariojgt\Skeleton\Resource\UserResource;
 
 class UserApiController extends Controller
 {

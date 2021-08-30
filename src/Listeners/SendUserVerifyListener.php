@@ -1,10 +1,10 @@
 <?php
 
-namespace Mariojgt\Unityuser\Listeners;
+namespace Mariojgt\Skeleton\Listeners;
 
 use Illuminate\Support\Facades\Mail;
-use Mariojgt\Unityuser\Events\UserVerifyEvent;
-use Mariojgt\Unityuser\Mail\UserVerifyEmail;
+use Mariojgt\Skeleton\Events\UserVerifyEvent;
+use Mariojgt\Skeleton\Mail\UserVerifyEmail;
 
 class SendUserVerifyListener
 {

@@ -1,27 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light" >
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ $title ?? 'Unityuser' }}</title>
-    <link href="{{ asset('vendor/Unityuser/css/app.css') }}" rel="stylesheet">
+    <title>{{ $title ?? 'Skeleton' }}</title>
+    <link href="{{ asset('vendor/Skeleton/css/app.css') }}" rel="stylesheet">
     @stack('css')
 </head>
-
 <body>
-
-    <div id="app" class="">
-        <x-unity-user::layout.flash />
-        @if (Auth::check())
-            <x-unity-user::layout.navbar />
-        @endif
-        {{ $slot }}
-    </div>
-
-    <script src="{{ asset('vendor/Unityuser/js/app.js') }}"></script>
-    <script src="{{ asset('vendor/Unityuser/js/vue.js') }}"></script>
+    @if (Auth::check())
+        <x-skeleton::layout.navbar />
+    @endif
+    <x-skeleton::layout.flash />
+    {{ $slot }}
+    <script src="{{ asset('vendor/Skeleton/js/app.js') }}"></script>
     <script>
         const Toast = Swal.mixin({
             toast            : true,
@@ -37,5 +30,4 @@
     </script>
     @stack('js')
 </body>
-
 </html>

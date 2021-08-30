@@ -1,6 +1,6 @@
 <?php
 
-namespace Mariojgt\Unityuser\Commands;
+namespace Mariojgt\Skeleton\Commands;
 
 use Artisan;
 use Illuminate\Console\Command;
@@ -12,14 +12,14 @@ class Install extends Command
      *
      * @var string
      */
-    protected $signature = 'install:unity-user';
+    protected $signature = 'install:skeleton';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'This Command will install Unityuser package';
+    protected $description = 'This Command will install Skeleton package';
 
     /**
      * Create a new command instance.
@@ -38,9 +38,9 @@ class Install extends Command
      */
     public function handle()
     {
-        // Copy the need file to make the unity-user to work
+        // Copy the need file to make the skeleton to work
         Artisan::call('vendor:publish', [
-            '--provider' => 'Mariojgt\Unityuser\SkeletonProvider',
+            '--provider' => 'Mariojgt\Skeleton\SkeletonProvider',
             '--force'    => true,
         ]);
 

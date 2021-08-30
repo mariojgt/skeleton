@@ -1,15 +1,15 @@
 <?php
 
-namespace Mariojgt\Unityuser\Controllers\Auth;
+namespace Mariojgt\Skeleton\Controllers\Auth;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Verified;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Mariojgt\UnityAdmin\Models\User;
 use Illuminate\Support\Facades\Redirect;
-use Mariojgt\Unityuser\Events\UserVerifyEvent;
+use Mariojgt\Skeleton\Models\User;
+use Mariojgt\Skeleton\Events\UserVerifyEvent;
 
 class LoginController extends Controller
 {
@@ -18,7 +18,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('unity-user::content.auth.login');
+        return view('skeleton::content.auth.login');
     }
 
     /**
@@ -26,7 +26,7 @@ class LoginController extends Controller
      */
     public function register()
     {
-        return view('unity-user::content.auth.register');
+        return view('skeleton::content.auth.register');
     }
 
     /**
@@ -47,7 +47,7 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         // Try login Note the you have the guard
-        if (Auth::guard(config('unityuser.user_guard'))->attempt($credentials)) {
+        if (Auth::guard(config('skeleton.user_guard'))->attempt($credentials)) {
             return Redirect::route('home_dashboard')->with('success', 'Welcome :)');
         } else {
             return  Redirect::back()->with('error', 'Credentials do not match');
@@ -79,10 +79,11 @@ class LoginController extends Controller
      */
     public function verify(Request $request, $userId, $expiration)
     {
-        $userId     = decrypt($userId);
         $user       = User::findOrFail($userId);
+        $userId     = decrypt($userId);
         $expiration = decrypt($expiration);
         $nowDate    = Carbon::now();
+
         // Check if is expired
         if ($nowDate > $expiration) {
             return Redirect::route('login')->with('error', 'Link Expired!');
@@ -106,7 +107,7 @@ class LoginController extends Controller
     public function needVerify()
     {
         // In here we check if we want to send the user a need verification
-        if (config('unityuser.send_verification')) {
+        if (config('skeleton.send_verification')) {
             // Send the verification to the user
             UserVerifyEvent::dispatch(Auth::user());
         }

@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Mariojgt\Unityuser\Controllers\Api\AuthApiControler;
-use Mariojgt\Unityuser\Controllers\Api\UserApiController;
+use Mariojgt\Skeleton\Controllers\Api\AuthApiControler;
+use Mariojgt\Skeleton\Controllers\Api\UserApiController;
 
 // Check url
 Route::group([
@@ -18,14 +18,14 @@ Route::group([
     'prefix'     => 'api',
 ], function () {
     // Api to Login
-    Route::post('/unity-user/api/login', [AuthApiControler::class, 'login'])
-        ->name('unity-user.api.login');
+    Route::post('/skeleton/api/login', [AuthApiControler::class, 'login'])
+        ->name('skeleton.api.login');
     // Api to Register
-    Route::post('/unity-user/api/register', [AuthApiControler::class, 'register'])
-        ->name('unity-user.api.register');
+    Route::post('/skeleton/api/register', [AuthApiControler::class, 'register'])
+        ->name('skeleton.api.register');
     // Api connection test
-    Route::post('/unity-user/api/check-boot-tooken', [AuthApiControler::class, 'checkConnection'])
-        ->name('unity-user.api.check-boot-tooken');
+    Route::post('/skeleton/api/check-boot-tooken', [AuthApiControler::class, 'checkConnection'])
+        ->name('skeleton.api.check-boot-tooken');
 });
 
 // Auth Route
@@ -34,8 +34,8 @@ Route::group([
     'prefix'     => 'api',
 ], function () {
     // Check valid token
-    Route::post('/unity-user/api/check-token', [UserApiController::class, 'checkToken'])->name('unity-user.api.check-token');
+    Route::post('/skeleton/api/check-token', [UserApiController::class, 'checkToken'])->name('skeleton.api.check-token');
     // Load user info
-    Route::post('/unity-user/api/user', [UserApiController::class, 'userProfile'])->name('unity-user.api.user');
-    Route::post('/unity-user/api/user-update', [UserApiController::class, 'userUpdateProfile'])->name('unity-user.api.user-update');
+    Route::post('/skeleton/api/user', [UserApiController::class, 'userProfile'])->name('skeleton.api.user');
+    Route::post('/skeleton/api/user-update', [UserApiController::class, 'userUpdateProfile'])->name('skeleton.api.user-update');
 });

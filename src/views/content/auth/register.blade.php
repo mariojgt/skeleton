@@ -1,6 +1,24 @@
-<x-unity-user::layout.login>
+<x-skeleton::layout.login>
+    <x-skeleton::auth.authconteiner title="Register" >
+        <x-slot name="form">
+            <x-skeleton::form.form action="{{ route('register.user') }}" >
+                <div class="px-5 py-7">
+                    <x-skeleton::form.text name="name" label="Name" />
+                    <x-skeleton::form.email name="email" label="Email" />
+                    <x-skeleton::form.password name="password" label="Password" />
+                    <x-skeleton::form.password name="password_confirmation" label="Password Confirm" />
+                    <x-skeleton::form.submit name="Register" />
+                </div>
+            </x-skeleton::form.form>
+        </x-slot>
 
-    {{-- Load the component that render the login page for custom changes --}}
-    <x-admin-user.auth.register />
+        <x-slot name="links">
+            <div class="px-5 py-7">
+                <div class="grid grid-cols-1 gap-3">
+                    <x-skeleton::form.link route="{{ route('login') }}" name="Login" />
+                </div>
+            </div>
+        </x-slot>
+    </x-skeleton::auth.authconteiner>
+</x-skeleton::layout.login>
 
-</x-unity-user::layout.login>

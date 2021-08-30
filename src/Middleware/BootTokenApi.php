@@ -1,6 +1,6 @@
 <?php
 
-namespace Mariojgt\Unityuser\Middleware;
+namespace Mariojgt\Skeleton\Middleware;
 
 use Closure;
 use Illuminate\Foundation\Application;
@@ -36,7 +36,7 @@ class BootTokenApi
                 'data' => 'Boot token missing or invalid',
             ], 401);
         } else {
-            if ($request->bearerToken() == config('unityuser.boot_token')) {
+            if ($request->bearerToken() == config('skeleton.boot_token')) {
                 // On Sucess
                 return $next($request);
             } else {

@@ -1,18 +1,20 @@
-<x-unity-user::layout.login>
-    <x-unity-user::auth.authconteiner title="Password Reset" subtitle="reset your password here." >
+<x-skeleton::layout.login>
+    <x-skeleton::auth.authconteiner title="Password Reset" >
         <x-slot name="form">
-            <x-unity-user::form.form action="{{ route('password-reset') }}">
-                <div class="space-y-4">
-                    <x-unity-user::form.email name="email" label="Email" />
-                    <x-unity-user::form.submit name="Reset" />
+            <x-skeleton::form.form action="{{ route('password-reset') }}" >
+                <div class="px-5 py-7">
+                    <x-skeleton::form.email name="email" label="Email" />
+                    <x-skeleton::form.submit name="Reset" />
                 </div>
-            </x-unity-user::form.form>
+            </x-skeleton::form.form>
         </x-slot>
 
         <x-slot name="links">
-            <div class="text-center mt-6">
-                <x-unity-user::form.link route="{{ route('login') }}" name="Login" />
+            <div class="px-5 py-7">
+                <div class="grid grid-cols-1 gap-3">
+                    <x-skeleton::form.link route="{{ route('login') }}" name="Login" />
+                </div>
             </div>
         </x-slot>
-    </x-unity-user::auth.authconteiner>
-</x-unity-user::layout.login>
+    </x-skeleton::auth.authconteiner>
+</x-skeleton::layout.login>
