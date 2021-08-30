@@ -12,6 +12,7 @@ use Illuminate\Validation\Rules\Password;
 use Mariojgt\Onixserver\Helpers\ApiHelper;
 use Mariojgt\Unityuser\Events\UserVerifyEvent;
 use Mariojgt\Onixserver\Controllers\Gateway\GatewayController;
+use App\Helpers\AuthOverride;
 
 class RegisterController extends Controller
 {
@@ -55,53 +56,10 @@ class RegisterController extends Controller
         $user->password   = Hash::make(Request('password'));
         $user->save();
 
-        // beskpoke part here
+        // In here we call a helper case we need some bespoke extra fuctions
+        $authOverhide = new AuthOverride();
+        $authOverhide->customRegister($request, $user);
 
-        // Create the customer in the stripe and generate a key
-        $gateway = new GatewayController();
-        $gateway->createCustomer($user);
-
-        // If is a paid plan we can create a subscription and charge the customer
-        if (request('plan') == 'paid') {
-
-            $request->validate([
-                "number"    => ['required'],
-                "exp_month" => ['required', 'numeric'],
-                "exp_year"  => ['required', 'numeric'],
-                "cvc"       => ['required', 'numeric'],
-            ]);
-
-            // Validate payment
-            $paymentInfo = $gateway->createPaymentMethod($request);
-            // If fail return error and roll all database back
-            if ($paymentInfo == false) {
-                DB::rollback();
-                return Redirect::back()
-                    ->with('error', 'Card information invalid please try again.')
-                    ->withInput(Request()->all());
-            }
-
-            // Now update the user payment method and subscribe him
-            $apiHelper           = new ApiHelper();
-            $userKey             = $apiHelper::getUserKeyInfo($user);
-
-            // Update the customer payment method
-            $customerUpdatedInfo = $gateway
-                ->updateUserPaymentInformation($userKey->customer_ref_payment, $paymentInfo->id);
-            // Store the payment method ref in the key
-            $userKey->payment_ref      = $customerUpdatedInfo->id;
-            $userKey->save();
-
-            // Create the subscription on stripe
-            $subscriptionSchedule = $gateway->createSubscription($user);
-
-            // for test only
-            //StripeUserSubscriptionSuccessEvent::dispatch($subscriptionSchedule);
-
-            // The account update fpr the paid plan is done using weebhook
-            // The invoice is generated using the webhook
-        }
-        // beskpoe finish
         // Send the verification to the user
         UserVerifyEvent::dispatch($user);
         DB::commit();

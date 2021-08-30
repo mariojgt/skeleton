@@ -20,7 +20,7 @@
         </div>
         <input type="password" name="{{ $name ?? 'name' }}" id="{{ $id ?? $name }}"
             {{ $required ?? '' == "true" ? "required" : "" }} value="{{ $value ?? old($name) }}"
-            placeholder="{{ $placeholder ?? '' }}" class="flex-shrink flex-grow leading-normal w-px border border-l-0 h-10 rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow
+            placeholder="{{ $placeholder ?? '' }}" class="flex-shrink flex-grow leading-normal w-px border border-r-0 border-blue-300 h-10 rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow
             text-base-content
             bg-base-100
             focus:border-black dark:focus:border-white dark:bg-gray-900 dark:text-white text-sm

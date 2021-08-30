@@ -2,13 +2,13 @@
 
 namespace Mariojgt\Unityuser\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Auth;
+use Mariojgt\UnityAdmin\Models\User;
 use Illuminate\Support\Facades\Redirect;
-use Mariojgt\Unityuser\Models\User;
 use Mariojgt\Unityuser\Events\UserVerifyEvent;
 
 class LoginController extends Controller
@@ -79,11 +79,10 @@ class LoginController extends Controller
      */
     public function verify(Request $request, $userId, $expiration)
     {
-        $user       = User::findOrFail($userId);
         $userId     = decrypt($userId);
+        $user       = User::findOrFail($userId);
         $expiration = decrypt($expiration);
         $nowDate    = Carbon::now();
-
         // Check if is expired
         if ($nowDate > $expiration) {
             return Redirect::route('login')->with('error', 'Link Expired!');
