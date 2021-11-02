@@ -1,7 +1,7 @@
 <x-skeleton::layout.login>
-    <x-skeleton::auth.authconteiner title="Register" >
+    <x-skeleton::auth.authconteiner title="Register">
         <x-slot name="form">
-            <x-skeleton::form.form action="{{ route('register.user') }}" >
+            <x-skeleton::form.form action="{{ route('register.user') }}">
                 <div class="px-5 py-7">
                     <x-skeleton::form.text name="name" label="Name" />
                     <x-skeleton::form.email name="email" label="Email" />
@@ -13,12 +13,7 @@
         </x-slot>
 
         <x-slot name="links">
-            <div class="px-5 py-7">
-                <div class="grid grid-cols-1 gap-3">
-                    <x-skeleton::form.link route="{{ route('login') }}" name="Login" />
-                </div>
-            </div>
+            <x-skeleton::form.link route="{{ route('login') }}" name="Login" />
         </x-slot>
     </x-skeleton::auth.authconteiner>
 </x-skeleton::layout.login>
-

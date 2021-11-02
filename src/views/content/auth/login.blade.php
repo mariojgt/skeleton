@@ -1,10 +1,7 @@
 <x-skeleton::layout.login>
-    <x-skeleton::auth.authconteiner
-    title="Login"
-    image="/vendor/Skeleton/image/skeleton.png"
-    >
+    <x-skeleton::auth.authconteiner title="Login">
         <x-slot name="form">
-            <x-skeleton::form.form action="{{ route('login.user') }}" >
+            <x-skeleton::form.form action="{{ route('login.user') }}">
                 <div class="px-5 py-7">
                     <x-skeleton::form.email name="email" label="Email" />
                     <x-skeleton::form.password name="password" label="Password" />
@@ -18,11 +15,8 @@
                 <div class="text-center sm:text-center whitespace-nowrap">
                     <x-skeleton::form.link route="{{ route('forgot-password') }}" name="Forgot Password" />
                 </div>
-                <div class="text-center sm:text-center whitespace-nowrap" >
+                <div class="text-center sm:text-center whitespace-nowrap">
                     <x-skeleton::form.link route="{{ route('register') }}" name="Register" />
-                </div>
-                <div class="text-center sm:text-center whitespace-nowrap" >
-                    <x-skeleton::form.dark_light />
                 </div>
             </div>
         </x-slot>

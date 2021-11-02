@@ -76,7 +76,7 @@ class ResetPassword extends Controller
             }
         );
 
-        return redirect()->intended('home_dashboard')
+        return redirect()->intended('home')
             ->with('success', 'Password changed with success.');
     }
 }

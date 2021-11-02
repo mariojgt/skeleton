@@ -1,36 +1,39 @@
-{{-- Logo slot --}}
-@if (!empty($image))
-<div
-    class="bg-white border border-4 border-black dark:border-white dark:bg-black shadow w-full rounded-lg divide-y divide-white">
-    <div
-        class="flex flex-col justify-center items-center relative h-full bg-white dark:bg-black bg-opacity-50 dark:text-white text:black">
-        <img src="{{ $image }}" class="h-24 w-24 object-cover rounded-full">
-        <h1 class="text-2xl font-semibold">Skeleton
-            <small><a href="https://github.com/mariojgt/skeleton/wiki" target="_blank">Documentation</a></small>
-        </h1>
-        <h4 class="font-semibold text-sm text-gray-600 dark:text-white pb-1 block">Mario Jose Goes Tarosso </h4>
-        <div class="flex mt-4 text-sm font-semibold text-black">
-            <svg class="w-4 h-4 mt-1 mr-2 text-green-600" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                <path
-                    d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z">
-                </path>
-            </svg>
-            <div class="text-black dark:text-white">
-                v{{ config('skeleton.version') }}
-                <br>
-                <span class="text-xs">on June 10, 2021</span>
+<!-- component -->
+{{-- <img class="mb-3 mx-auto" style="height: 150px;" src="https://www.fatcow.com/images/free-logos/World-Wide01.jpg"
+    alt=""> --}}
+
+<div class="flex items-center min-h-screen p-6 bg-base-200">
+    <div class="
+          flex-1
+          h-full
+          max-w-4xl
+          mx-auto
+          overflow-hidden
+          bg-base-300
+          rounded-lg
+          shadow-xl
+        ">
+        <div class="flex flex-col overflow-y-auto md:flex-row">
+            <div class="h-32 md:h-auto md:w-1/2">
+
+                {{-- Logo go here --}}
+                <x-skeleton::core.logo full="true" />
+
+            </div>
+            <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
+                <div class="w-full">
+                    <h1 class="
+                        my-4 text-4xl font-bold card-title
+                            ">
+                        {{ $title ?? 'add a title' }}
+                    </h1>
+
+                    {{ $form }}
+                    <div class="justify-end space-x-2 card-actions">
+                        {{ $links }}
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-@endif
-
-<h1 class="font-bold text-center text-2xl mb-5 dark:text-white">{{ $title ?? 'Title here' }}</h1>
-<div
-    class="bg-white border border-4 border-black dark:border-white dark:bg-black shadow w-full rounded-lg divide-y divide-white">
-    {{ $form }}
-    <div class="py-5">
-        {{ $links }}
     </div>
 </div>

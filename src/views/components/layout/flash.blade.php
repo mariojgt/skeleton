@@ -49,8 +49,7 @@
                 close: true,
                 gravity: "top",
                 position: "center", // `left`, `center` or `right`
-                className: "flex font-medium py-5 px-2 rounded-md text-white",
-                escapeMarkup : false,
+                className: "flex font-medium py-5 px-2 rounded-md text-white"
                 }).showToast();
             </script>
         @endpush
