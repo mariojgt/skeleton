@@ -37,9 +37,13 @@ class SkeletonProfileController extends Controller
         // if true we can sync the user
         if ($verification) {
             Auth::user()->syncAutenticator(decrypt(Session::get('autenticator_key')));
-        }
-
-        return Redirect::back()
+            // Return success
+            return Redirect::back()
             ->with('success', 'code sync with success.');
+        } else {
+            // Return success
+            return Redirect::back()
+            ->with('error', 'Sorry Code invalid try again.');
+        }
     }
 }

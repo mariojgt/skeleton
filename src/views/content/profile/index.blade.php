@@ -5,7 +5,7 @@
 <x-skeleton::layout.main>
     <div class="grid grid-cols-1 gap-6 lg:p-10 xl:grid-cols-12 lg:bg-base-200 rounded-box">
 
-        {{-- check if the user has setup 2fa --}}
+        {{-- Check if the user has setup 2fa --}}
         @if (Auth()->user()->twoStepsEnable() == false)
             @php
                 // Generate the qr-code
