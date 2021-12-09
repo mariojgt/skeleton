@@ -45,11 +45,12 @@
                     <line x1="12" y1="8" x2="12" y2="12"></line>
                     <line x1="12" y1="16" x2="12.01" y2="16"></line>
                 </svg> {{ $error }}`,
-                duration: 30000,
-                close: true,
-                gravity: "top",
-                position: "center", // `left`, `center` or `right`
-                className: "flex font-medium py-5 px-2 rounded-md text-white"
+                duration    : 30000,
+                close       : true,
+                gravity     : "top",
+                position    : "center",                                             // `left`, `center` or `right`
+                className   : "flex font-medium py-5 px-2 rounded-md text-white",
+                escapeMarkup: true
                 }).showToast();
             </script>
         @endpush
