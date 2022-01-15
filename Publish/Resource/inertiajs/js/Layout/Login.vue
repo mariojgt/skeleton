@@ -1,7 +1,5 @@
 <template>
-
     <FlashMessage/>
-
     <auth-wraper :title="props.title" >
             <template v-slot:form >
                 <slot name="form" />
@@ -10,7 +8,6 @@
                 <slot name="links" />
             </template>
     </auth-wraper>
-
 </template>
 
 <script setup>
