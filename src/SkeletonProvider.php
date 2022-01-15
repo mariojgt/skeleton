@@ -61,24 +61,31 @@ class SkeletonProvider extends ServiceProvider
 
     public function publish()
     {
+        // Publish the public folder
+        $this->publishes([
+            __DIR__.'/../Publish/Config/' => config_path(''),
+        ]);
+
+        // Inersia js
+        if (config('skeleton.inertiajs_enable')) {
+            $prefix_blade = 'inertiajs';
+        } else {
+            $prefix_blade = 'blade';
+        }
+
         // Publish the npm
         $this->publishes([
-            __DIR__.'/../Publish/Npm/' => base_path(),
+            __DIR__.'/../Publish/Npm/'.$prefix_blade => base_path(),
         ]);
 
         // Publish the resource
         $this->publishes([
-            __DIR__.'/../Publish/Resource/' => resource_path('vendor/Skeleton/'),
+            __DIR__.'/../Publish/Resource/'.$prefix_blade => resource_path('vendor/Skeleton/'),
         ]);
 
         // Publish the public folder with the css and javascript pre compile
         $this->publishes([
-            __DIR__.'/../Publish/Public/' => public_path('vendor/Skeleton/'),
-        ]);
-
-        // Publish the public folder
-        $this->publishes([
-            __DIR__.'/../Publish/Config/' => config_path(''),
+            __DIR__.'/../Publish/Public/'.$prefix_blade => public_path('vendor/Skeleton/'),
         ]);
     }
 }

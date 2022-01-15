@@ -2,13 +2,14 @@
 
 namespace Mariojgt\Skeleton\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Auth\Events\Verified;
+use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Mariojgt\Skeleton\Models\User;
+use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Mariojgt\Skeleton\Models\User;
 use Mariojgt\Skeleton\Events\UserVerifyEvent;
 
 class LoginController extends Controller
@@ -18,15 +19,13 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('skeleton::content.auth.login');
-    }
-
-    /**
-     * @return [blade view]
-     */
-    public function register()
-    {
-        return view('skeleton::content.auth.register');
+        if (config('skeleton.inertiajs_enable')) {
+            return Inertia::render('Login/Index', [
+                'title' => 'Login',
+            ]);
+        } else {
+            return view('skeleton::content.auth.login');
+        }
     }
 
     /**
@@ -50,7 +49,7 @@ class LoginController extends Controller
         if (Auth::guard(config('skeleton.user_guard'))->attempt($credentials)) {
             return Redirect::route('skeleton.home')->with('success', 'Welcome :)');
         } else {
-            return  Redirect::back()->with('error', 'Credentials do not match');
+            return Redirect::route('login')->with('error', 'Credentials do not match');
         }
     }
 
@@ -79,9 +78,9 @@ class LoginController extends Controller
      */
     public function verify(Request $request, $userId, $expiration)
     {
-        $user       = User::findOrFail($userId);
         $userId     = decrypt($userId);
         $expiration = decrypt($expiration);
+        $user       = User::findOrFail($userId);
         $nowDate    = Carbon::now();
 
         // Check if is expired

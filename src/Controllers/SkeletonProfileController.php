@@ -2,6 +2,7 @@
 
 namespace Mariojgt\Skeleton\Controllers;
 
+use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,15 @@ class SkeletonProfileController extends Controller
      */
     public function profile()
     {
-        return view('skeleton::content.profile.index');
+        if (config('skeleton.inertiajs_enable')) {
+            $autenticator = new AutenticatorHandle();
+            return Inertia::render('Dashboard/MyProfile', [
+                'autenticator'        => $autenticator->generateCode(Auth()->user()->email),
+                'autenticator_enable' => Auth()->user()->twoStepsEnable(),
+            ]);
+        } else {
+            return view('skeleton::content.profile.index');
+        }
     }
 
       /**

@@ -2,13 +2,14 @@
 
 namespace Mariojgt\Skeleton\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Auth\Events\PasswordReset;
+use Inertia\Inertia;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Str;
+use Illuminate\Auth\Events\PasswordReset;
 
 class ResetPassword extends Controller
 {
@@ -17,7 +18,13 @@ class ResetPassword extends Controller
      */
     public function index()
     {
-        return view('skeleton::content.auth.forgot');
+        if (config('skeleton.inertiajs_enable')) {
+            return Inertia::render('Login/Reset', [
+                'title' => 'Login',
+            ]);
+        } else {
+            return view('skeleton::content.auth.forgot');
+        }
     }
 
     /**
@@ -45,7 +52,13 @@ class ResetPassword extends Controller
      */
     public function passwordReset($token)
     {
-        return view('skeleton::content.auth.reset_password', compact('token'));
+        if (config('skeleton.inertiajs_enable')) {
+            return Inertia::render('Login/ResetPassword', [
+                'token' => $token,
+            ]);
+        } else {
+            return view('skeleton::content.auth.reset_password', compact('token'));
+        }
     }
 
     /**
@@ -76,7 +89,6 @@ class ResetPassword extends Controller
             }
         );
 
-        return redirect()->intended('home')
-            ->with('success', 'Password changed with success.');
+        return Redirect::route('login')->with('success', 'Password Update');
     }
 }

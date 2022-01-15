@@ -2,13 +2,14 @@
 
 namespace Mariojgt\Skeleton\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Mariojgt\Skeleton\Models\User;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rules\Password;
 use Mariojgt\Skeleton\Events\UserVerifyEvent;
-use Mariojgt\Skeleton\Models\User;
 
 class RegisterController extends Controller
 {
@@ -17,8 +18,15 @@ class RegisterController extends Controller
      */
     public function register()
     {
-        return view('skeleton::content.auth.register');
+        if (config('skeleton.inertiajs_enable')) {
+            return Inertia::render('Login/Register', [
+                'title' => 'Login',
+            ]);
+        } else {
+            return view('skeleton::content.auth.register');
+        }
     }
+
 
     /**
      * Register a new user to the aplication.
@@ -30,7 +38,7 @@ class RegisterController extends Controller
     public function userRegister(Request $request)
     {
         if (config('skeleton.register_enable') == false) {
-            return  Redirect::back()->with('error', 'Sorry but registration has been disable.');
+            return Redirect::back()->with('error', 'Sorry but registration has been disable.');
         }
 
         // Validate the user Note the small update in the password verification
@@ -40,9 +48,9 @@ class RegisterController extends Controller
             'password' => ['required', 'confirmed', Password::min(8)->uncompromised()],
         ]);
 
-        $user = new User();
-        $user->name = Request('name');
-        $user->email = Request('email');
+        $user           = new User();
+        $user->name     = Request('name');
+        $user->email    = Request('email');
         $user->password = Hash::make(Request('password'));
         $user->save();
 
