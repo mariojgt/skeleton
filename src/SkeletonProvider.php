@@ -67,8 +67,11 @@ class SkeletonProvider extends ServiceProvider
             __DIR__ . '/../Publish/Config/' => config_path(''),
         ]);
 
+        // Render Type
+        $renderType = config('skeleton.inertiajs_enable') ?? true;
+
         // Inersia js
-        if (config('skeleton.inertiajs_enable')) {
+        if ($renderType) {
             $prefix_blade = 'inertiajs';
 
             // Publish the kernel stuff
@@ -83,7 +86,7 @@ class SkeletonProvider extends ServiceProvider
                     => app_path('Http/Middleware'),
             ]);
 
-            // Publish now view for the inersia
+            // Publish now view for the inersia were we goin to render the page
             $this->publishes([
                 __DIR__ . '/../Publish/InersiaRequest/appLayout'
                     => resource_path('views/'),
