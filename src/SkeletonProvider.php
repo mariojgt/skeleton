@@ -77,19 +77,19 @@ class SkeletonProvider extends ServiceProvider
             // Publish the kernel stuff
             $this->publishes([
                 __DIR__ . '/../Publish/InersiaRequest/kernel'
-                    => base_path('app/Http/'),
+                => base_path('app/Http/'),
             ]);
 
             // Publish the inersia request stuff
             $this->publishes([
                 __DIR__ . '/../Publish/InersiaRequest/handleRequest'
-                    => app_path('Http/Middleware'),
+                => app_path('Http/Middleware'),
             ]);
 
             // Publish now view for the inersia were we goin to render the page
             $this->publishes([
                 __DIR__ . '/../Publish/InersiaRequest/appLayout'
-                    => resource_path('views/'),
+                => resource_path('views/'),
             ]);
         } else {
             $prefix_blade = 'blade';

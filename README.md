@@ -1,7 +1,7 @@
 ![image info](https://raw.githubusercontent.com/mariojgt/skeleton/master/Publish/Public/image/skeleton.png)
 
 # Skeleton
-This Laravel packages contain a very simple structure for any kind of packages development for Laravel
+This is a base package for laravel it comes with 2 options blade or vue inersia js
 
 # Features
 
@@ -53,7 +53,7 @@ You have 2 options.
        },
    ```
 
-4. php artsain vendor:publish --force  (select the package number)
+4. php artsain install:skelton
 
 ## Command Republish
 
@@ -71,6 +71,6 @@ This package purpose is to give a fresh start for a new package so you can use t
 # Easy way to install
 
 ```php
-php artisan install:skeleton 
-    
+php artisan install:skeleton
+
 ```
