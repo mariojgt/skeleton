@@ -1,4 +1,4 @@
-![image info](https://raw.githubusercontent.com/mariojgt/skeleton/master/Publish/Public/image/skeleton.png)
+![image info](https://raw.githubusercontent.com/mariojgt/skeleton/master/Publish/Art/skeleton.png)
 
 # Skeleton
 This is a base package for laravel it comes with 2 options blade or vue inersia js
